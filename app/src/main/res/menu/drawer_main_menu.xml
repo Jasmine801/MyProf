@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/menu_cat1">
+        <menu>
+            <item
+                android:title="@string/ad_publications"
+                android:id="@+id/id_public"/>
+            <item
+                android:title="@string/ad_chats"
+                android:id="@+id/id_chats"/>
+            <item
+                android:title="@string/ad_career_guidance"
+                android:id="@+id/id_career_guidance"/>
+            <item
+                android:title="@string/ad_settings"
+                android:id="@+id/id_settings"/>
+        </menu>
+    </item>
+
+
+    <item android:title="@string/menu_cat2">
+        <menu>
+            <item
+                android:title="@string/ad_acсount"
+                android:id="@+id/id_account"/>
+            <item
+                android:title="@string/ad_reference"
+                android:id="@+id/id_reference"/>
+        </menu>
+
+    </item>
+
+</menu>

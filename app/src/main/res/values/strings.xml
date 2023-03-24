@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MyProf</string>
+    <!-- Меню -->
+    <string name="menu_cat1">Основное</string>
+    <string name="menu_cat2">Доп</string>
+    <string name="ad_publications">Публикации</string>
+    <string name="ad_chats">Чаты</string>
+    <string name="ad_acсount">Аккаунт</string>
+    <string name="ad_settings">Настройки</string>
+    <string name="ad_career_guidance">Профориентация</string>
+    <string name="ad_reference">Справка</string>
+    <string name="open">Открыть</string>
+    <string name="close">Закрыть</string>
+</resources>
