@@ -24,11 +24,11 @@
     <item android:title="@string/menu_cat2">
         <menu>
             <item
+                android:title="@string/ad_my_publications"
+                android:id="@+id/id_my_publications"/>
+            <item
                 android:title="@string/ad_acсount"
                 android:id="@+id/id_account"/>
-            <item
-                android:title="@string/ad_reference"
-                android:id="@+id/id_reference"/>
         </menu>
 
     </item>
