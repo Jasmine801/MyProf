@@ -3,6 +3,7 @@ package com.mamedli.myprof.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
@@ -13,6 +14,7 @@ import com.mamedli.myprof.db.MainDataBase
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var binding: ActivityMainBinding
+    lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -21,13 +23,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun init(){
-        var toggle = ActionBarDrawerToggle(
-            this, binding.drawerLayout, binding.mainContent.toolbar, R.string.open, R.string.close
+        toggle = ActionBarDrawerToggle(
+            this, binding.drawerLayout, R.string.open, R.string.close
         )
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         binding.navView.setNavigationItemSelectedListener(this)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem) : Boolean{
+        if(toggle.onOptionsItemSelected(item)){
+
+            true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
