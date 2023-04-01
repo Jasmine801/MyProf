@@ -7,10 +7,20 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import com.mamedli.myprof.R
+import com.mamedli.myprof.activities.MainActivity
+import com.mamedli.myprof.databinding.FragmentNewPublicationBinding
+import com.mamedli.myprof.databinding.FragmentPublicationsBinding
+import com.mamedli.myprof.db.DaoFirebase
+import com.mamedli.myprof.db.MainDataBase
+import com.mamedli.myprof.entities.PublicationsItem
 
 
 class NewPublicationFragment : Fragment(), MenuProvider {
+
+    var dao = DaoFirebase()
+    lateinit var binding: FragmentNewPublicationBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,11 +30,13 @@ class NewPublicationFragment : Fragment(), MenuProvider {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         //createSaveMenu()
+        //actionBarSettings()
+        binding = FragmentNewPublicationBinding.inflate(inflater, container, false)
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-        return inflater.inflate(R.layout.fragment_new_publication, container, false)
+        return binding.root
     }
 
     companion object {
@@ -36,9 +48,31 @@ class NewPublicationFragment : Fragment(), MenuProvider {
        menuInflater.inflate(R.menu.new_publication_menu, menu)
     }
 
+
+    private fun actionBarSettings(){
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
+    }
+
+    private fun createNewPublication() : PublicationsItem{
+        return PublicationsItem(
+            "",
+            binding.edTitle.text.toString(),
+            binding.edDescription.text.toString(),
+            "0"
+        )
+    }
+
+    private fun setCreateResult(){
+        val publication = createNewPublication()
+        dao.insertPublication(publication)
+    }
+
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        val controller = findNavController()
         return when (menuItem.itemId) {
             R.id.id_save -> {
+                setCreateResult()
+                controller.navigate(R.id.publicationsFragment)
                 true
             }
             else -> false

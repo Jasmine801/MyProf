@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 
 data class PublicationsItem(
-    val id: Int?,
+    val id: String,
     val title: String,
     val description: String,
-    val allCommentCount: Int,
+    val allCommentCount: String,
 )

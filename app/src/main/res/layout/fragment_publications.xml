@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcView"
+            android:id="@+id/rcViewPublic"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
             android:src="@drawable/ic_add_publication"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rcView"
+            app:layout_constraintTop_toBottomOf="@+id/rcViewPublic"
             app:layout_constraintVertical_bias="1.0"
             tools:ignore="SpeakableTextPresentCheck" />
 
