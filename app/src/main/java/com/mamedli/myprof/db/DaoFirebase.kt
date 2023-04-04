@@ -9,6 +9,6 @@ class DaoFirebase {
     var mainDataBase = MainDataBase()
 
     fun insertPublication(publication: PublicationsItem){
-        mainDataBase.reference.child("publications").child(publication.id).setValue(publication)
+        //mainDataBase.reference.child("publications").child(publication.id).setValue(publication)
     }
 }

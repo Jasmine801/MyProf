@@ -1,23 +1,28 @@
 package com.mamedli.myprof.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import com.mamedli.myprof.R
 import com.mamedli.myprof.databinding.PublicationListItemBinding
 import com.mamedli.myprof.entities.PublicationsItem
 
-class PublicationsAdapter : ListAdapter<PublicationsItem, PublicationsAdapter.ItemHolder>(ItemComparator()) {
+class PublicationsAdapter(private val publicationList: ArrayList<PublicationsItem>) :
+    RecyclerView.Adapter<PublicationsAdapter.ItemHolder>() {
+
 
     class ItemHolder(view: View) : RecyclerView.ViewHolder(view){
         private var binding = PublicationListItemBinding.bind(view)
 
-        fun setData(publicationItem: PublicationsItem) = with(binding){
-            tvTitle.text = publicationItem.title
-            tvDescription.text = publicationItem.description
+        fun setData(publicationItem: PublicationsItem?) = with(binding){
+            tvTitle.text = publicationItem?.title
+            tvDescription.text = publicationItem?.description
         }
 
         companion object{
@@ -34,10 +39,13 @@ class PublicationsAdapter : ListAdapter<PublicationsItem, PublicationsAdapter.It
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.setData(getItem(position))
+        holder.setData(publicationList[position])
+        //val currentItem = publicationList[position]
+
+
     }
 
-
+/*
     class ItemComparator() : DiffUtil.ItemCallback<PublicationsItem>(){
         override fun areItemsTheSame(
             oldItem: PublicationsItem,
@@ -53,5 +61,9 @@ class PublicationsAdapter : ListAdapter<PublicationsItem, PublicationsAdapter.It
             return oldItem == newItem
         }
 
+    }*/
+
+    override fun getItemCount(): Int {
+        return publicationList.size
     }
 }

@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import com.mamedli.myprof.R
 import com.mamedli.myprof.adapters.PublicationsAdapter
@@ -24,7 +22,9 @@ class PublicationsFragment : Fragment() {
 
     lateinit var binding: FragmentPublicationsBinding
     lateinit var adapter: PublicationsAdapter
-    val dataBase = MainDataBase()
+    var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprof-1ac73-default-rtdb.firebaseio.com/")
+        .getReference("publications")
+    private lateinit var publicationsArrayList: ArrayList<PublicationsItem>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,23 +47,32 @@ class PublicationsFragment : Fragment() {
 
     private fun initRcView() = with(binding){
         rcViewPublic.layoutManager = LinearLayoutManager(activity)
-        adapter = PublicationsAdapter()
-        rcViewPublic.adapter = adapter
-        changeListener()
+        rcViewPublic.setHasFixedSize(true)
+        publicationsArrayList = arrayListOf<PublicationsItem>()
+
+        getPublicationsData()
     }
 
-    private fun changeListener(){
-        val postListener = object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val publication = dataSnapshot.getValue<PublicationsItem>()
+    private fun getPublicationsData() {
+        database.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists()){
+                    for(publicSnapshot in snapshot.children){
+                        val publication = publicSnapshot.getValue(PublicationsItem::class.java)
+                        publicationsArrayList.add(publication!!)
+                    }
+                    //binding.rcViewPublic.adapter = PublicationsAdapter(publicationsArrayList)
+                }
+                binding.rcViewPublic.adapter = PublicationsAdapter(publicationsArrayList)
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("TAG", "loadPost:onCancelled", databaseError.toException())
+            override fun onCancelled(error: DatabaseError) {
+
             }
-        }
-        dataBase.reference.addValueEventListener(postListener)
+
+        })
     }
+
 
     private fun onClickNewPublication(){
         val controller = findNavController()

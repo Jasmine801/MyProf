@@ -8,6 +8,10 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.mamedli.myprof.R
 import com.mamedli.myprof.activities.MainActivity
 import com.mamedli.myprof.databinding.FragmentNewPublicationBinding
@@ -20,6 +24,8 @@ import com.mamedli.myprof.entities.PublicationsItem
 class NewPublicationFragment : Fragment(), MenuProvider {
 
     var dao = DaoFirebase()
+    var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprof-1ac73-default-rtdb.firebaseio.com/")
+        .getReference("publications")
     lateinit var binding: FragmentNewPublicationBinding
 
 
@@ -55,7 +61,7 @@ class NewPublicationFragment : Fragment(), MenuProvider {
 
     private fun createNewPublication() : PublicationsItem{
         return PublicationsItem(
-            "",
+            database.key.toString(),
             binding.edTitle.text.toString(),
             binding.edDescription.text.toString(),
             "0"
@@ -64,7 +70,10 @@ class NewPublicationFragment : Fragment(), MenuProvider {
 
     private fun setCreateResult(){
         val publication = createNewPublication()
-        dao.insertPublication(publication)
+        //database = FirebaseDatabase.getInstance().getReference("publications")
+        //database.child("publications").child(publication.id).setValue(publication)
+        publication.id?.let { database.child(it).setValue(publication) }
+        //dao.insertPublication(publication)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
