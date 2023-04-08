@@ -21,10 +21,10 @@ import com.mamedli.myprof.entities.PublicationsItem
 class PublicationsFragment : Fragment() {
 
     lateinit var binding: FragmentPublicationsBinding
-    lateinit var adapter: PublicationsAdapter
     var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprof-1ac73-default-rtdb.firebaseio.com/")
         .getReference("publications")
     private lateinit var publicationsArrayList: ArrayList<PublicationsItem>
+    //var adapter = PublicationsAdapter(publicationsArrayList)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +42,14 @@ class PublicationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRcView()
+        //initRcView()
+        binding.rcViewPublic.layoutManager = LinearLayoutManager(activity)
+        binding.rcViewPublic.setHasFixedSize(true)
+        publicationsArrayList = arrayListOf<PublicationsItem>()
+        //binding.rcViewPublic.adapter = adapter
+
+        getPublicationsData()
+
     }
 
     private fun initRcView() = with(binding){
@@ -50,7 +57,8 @@ class PublicationsFragment : Fragment() {
         rcViewPublic.setHasFixedSize(true)
         publicationsArrayList = arrayListOf<PublicationsItem>()
 
-        getPublicationsData()
+
+        //getPublicationsData()
     }
 
     private fun getPublicationsData() {
@@ -61,7 +69,6 @@ class PublicationsFragment : Fragment() {
                         val publication = publicSnapshot.getValue(PublicationsItem::class.java)
                         publicationsArrayList.add(publication!!)
                     }
-                    //binding.rcViewPublic.adapter = PublicationsAdapter(publicationsArrayList)
                 }
                 binding.rcViewPublic.adapter = PublicationsAdapter(publicationsArrayList)
             }

@@ -23,6 +23,7 @@ class PublicationsAdapter(private val publicationList: ArrayList<PublicationsIte
         fun setData(publicationItem: PublicationsItem?) = with(binding){
             tvTitle.text = publicationItem?.title
             tvDescription.text = publicationItem?.description
+            tvCommentCount.text = publicationItem?.allCommentCount
         }
 
         companion object{
@@ -39,29 +40,11 @@ class PublicationsAdapter(private val publicationList: ArrayList<PublicationsIte
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.setData(publicationList[position])
-        //val currentItem = publicationList[position]
 
+        holder.setData(publicationList[position])
 
     }
 
-/*
-    class ItemComparator() : DiffUtil.ItemCallback<PublicationsItem>(){
-        override fun areItemsTheSame(
-            oldItem: PublicationsItem,
-            newItem: PublicationsItem
-        ): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(
-            oldItem: PublicationsItem,
-            newItem: PublicationsItem
-        ): Boolean {
-            return oldItem == newItem
-        }
-
-    }*/
 
     override fun getItemCount(): Int {
         return publicationList.size

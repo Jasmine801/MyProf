@@ -72,7 +72,8 @@ class NewPublicationFragment : Fragment(), MenuProvider {
         val publication = createNewPublication()
         //database = FirebaseDatabase.getInstance().getReference("publications")
         //database.child("publications").child(publication.id).setValue(publication)
-        publication.id?.let { database.child(it).setValue(publication) }
+        //publication.id?.let { database.child(it).push().setValue(publication) }
+        database.push().setValue(publication)
         //dao.insertPublication(publication)
     }
 
