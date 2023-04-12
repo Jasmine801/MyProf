@@ -25,7 +25,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/main_color"
         android:visibility="visible"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/drawer_main_menu" />
+        app:itemTextColor="@color/purple_200"
+        app:menu="@menu/drawer_main_menu"
+        app:subheaderColor="@color/select_icon_color" />
 </androidx.drawerlayout.widget.DrawerLayout>
