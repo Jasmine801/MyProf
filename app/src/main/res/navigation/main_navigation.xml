@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_publicationsFragment_to_newPublicationFragment"
             app:destination="@id/newPublicationFragment" />
+        <action
+            android:id="@+id/action_publicationsFragment_to_careerFragment"
+            app:destination="@id/careerFragment" />
     </fragment>
     <fragment
         android:id="@+id/newPublicationFragment"
@@ -22,5 +25,23 @@
         <action
             android:id="@+id/action_newPublicationFragment_to_publicationsFragment"
             app:destination="@id/publicationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/careerFragment"
+        android:name="com.mamedli.myprof.fragments.CareerFragment"
+        android:label="fragment_career"
+        tools:layout="@layout/fragment_career" >
+        <action
+            android:id="@+id/action_careerFragment_to_klimovTestFragment"
+            app:destination="@id/klimovTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/klimovTestFragment"
+        android:name="com.mamedli.myprof.fragments.KlimovTestFragment"
+        android:label="fragment_klimov_test"
+        tools:layout="@layout/fragment_klimov_test" >
+        <action
+            android:id="@+id/action_klimovTestFragment_to_careerFragment"
+            app:destination="@id/careerFragment" />
     </fragment>
 </navigation>

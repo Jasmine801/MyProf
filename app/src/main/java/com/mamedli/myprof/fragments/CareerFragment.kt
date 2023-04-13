@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.mamedli.myprof.R
 import com.mamedli.myprof.databinding.FragmentCareerBinding
 
@@ -22,11 +23,19 @@ class CareerFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCareerBinding.inflate(inflater, container, false)
+        onClickCareerGuidance()
         return binding.root
     }
 
     companion object {
         @JvmStatic
         fun newInstance() = CareerFragment()
+    }
+
+    private fun onClickCareerGuidance(){
+        val controller = findNavController()
+        binding.clKlimov.setOnClickListener {
+            controller.navigate(R.id.klimovTestFragment)
+        }
     }
 }

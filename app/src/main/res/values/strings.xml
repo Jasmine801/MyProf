@@ -18,5 +18,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="davidova">ТЕСТ \n Э.Х.ДАВЫДОВОЙ</string>
+    <string name="klimova">ТЕСТ \n Е.А. КЛИМОВА</string>
+    <string name="article">ПРОФОРИЕНТАЦИЯ КАК ВАЖНЫЙ \nЭЛЕМЕНТ НА ПУТИ К \nВЫБОРУ БУДУЩЕЙ ПРОФЕССИИ</string>
     <string name="test_proger">ТЕСТ \n СМОЖЕШЬ ЛИ ТЫ \nСТАТЬ \nПРОГРАММИСТОМ</string>
 </resources>

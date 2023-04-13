@@ -80,8 +80,8 @@ class PublicationsFragment : Fragment() {
         })
     }
 
-
     private fun onClickNewPublication(){
+
         val controller = findNavController()
         binding.ibAddPublication.setOnClickListener {
             controller.navigate(R.id.newPublicationFragment)
