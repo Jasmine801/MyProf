@@ -8,8 +8,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.mamedli.myprof.R
@@ -22,12 +25,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     lateinit var binding: ActivityMainBinding
     lateinit var toggle: ActionBarDrawerToggle
+    //lateinit var navController: NavController
+    val fragment = PublicationsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        init()
+        /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.publicationsFragment) as NavHostFragment?
+        if (navHostFragment != null) {
+            navController = navHostFragment.navController
+        }*/
+
     }
 
     private fun init(){
@@ -38,6 +47,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
         binding.navView.setNavigationItemSelectedListener(this)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        init()
     }
 
     override fun onOptionsItemSelected(item: MenuItem) : Boolean{
@@ -51,7 +65,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val transaction = supportFragmentManager.beginTransaction()
         when(item.itemId){
             R.id.id_public -> {
-                val fragment = PublicationsFragment()
                 transaction.replace(R.id.mainContent, fragment)
                 transaction.commit()
             }
@@ -62,9 +75,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.id_career_guidance -> {
+                /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContent) as NavHostFragment?
+                val navController = navHostFragment?.navController
+                navController?.navigate(R.id.careerFragment)*/
                 val fragment = CareerFragment()
                 transaction.replace(R.id.mainContent, fragment)
                 transaction.commit()
+                //navController.navigate(R.id.careerFragment)
 
             }
             R.id.id_my_publications -> {
@@ -77,4 +94,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+
 }

@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_publicationsFragment_to_careerFragment"
             app:destination="@id/careerFragment" />
+        <action
+            android:id="@+id/action_publicationsFragment_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
     <fragment
         android:id="@+id/newPublicationFragment"
@@ -44,4 +47,9 @@
             android:id="@+id/action_klimovTestFragment_to_careerFragment"
             app:destination="@id/careerFragment" />
     </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.mamedli.myprof.activities.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>

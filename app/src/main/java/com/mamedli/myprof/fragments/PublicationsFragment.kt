@@ -6,6 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
@@ -24,8 +29,6 @@ class PublicationsFragment : Fragment() {
     var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprof-1ac73-default-rtdb.firebaseio.com/")
         .getReference("publications")
     private lateinit var publicationsArrayList: ArrayList<PublicationsItem>
-    //var adapter = PublicationsAdapter(publicationsArrayList)
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,23 +45,12 @@ class PublicationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //initRcView()
         binding.rcViewPublic.layoutManager = LinearLayoutManager(activity)
         binding.rcViewPublic.setHasFixedSize(true)
         publicationsArrayList = arrayListOf<PublicationsItem>()
-        //binding.rcViewPublic.adapter = adapter
 
         getPublicationsData()
 
-    }
-
-    private fun initRcView() = with(binding){
-        rcViewPublic.layoutManager = LinearLayoutManager(activity)
-        rcViewPublic.setHasFixedSize(true)
-        publicationsArrayList = arrayListOf<PublicationsItem>()
-
-
-        //getPublicationsData()
     }
 
     private fun getPublicationsData() {
@@ -81,12 +73,16 @@ class PublicationsFragment : Fragment() {
     }
 
     private fun onClickNewPublication(){
-
-        val controller = findNavController()
         binding.ibAddPublication.setOnClickListener {
-            controller.navigate(R.id.newPublicationFragment)
+            Toast.makeText(context, "gud job", Toast.LENGTH_SHORT).show()
+            val transaction = childFragmentManager.beginTransaction().apply {
+                replace(R.id.mainContent, NewPublicationFragment())
+                commit()
+            }
+
         }
     }
+
 
     companion object {
         @JvmStatic
