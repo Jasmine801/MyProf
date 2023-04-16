@@ -1,19 +1,11 @@
 package com.mamedli.myprof.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toolbar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.mamedli.myprof.R
 import com.mamedli.myprof.databinding.ActivityMainBinding
@@ -69,7 +61,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 transaction.commit()
             }
             R.id.id_chats -> {
-
+                var intent = Intent(this, CareerActivity::class.java)
+                startActivity(intent)
             }
             R.id.id_settings -> {
 
@@ -78,10 +71,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContent) as NavHostFragment?
                 val navController = navHostFragment?.navController
                 navController?.navigate(R.id.careerFragment)*/
-                val fragment = CareerFragment()
+                /*val fragment = CareerFragment()
                 transaction.replace(R.id.mainContent, fragment)
-                transaction.commit()
+                transaction.commit()*/
                 //navController.navigate(R.id.careerFragment)
+                var intent = Intent(this, CareerActivity::class.java)
+                startActivity(intent)
 
             }
             R.id.id_my_publications -> {

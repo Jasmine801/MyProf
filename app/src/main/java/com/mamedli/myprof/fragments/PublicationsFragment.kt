@@ -26,6 +26,7 @@ import com.mamedli.myprof.entities.PublicationsItem
 class PublicationsFragment : Fragment() {
 
     lateinit var binding: FragmentPublicationsBinding
+    private val navController by lazy { findNavController() }
     var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprof-1ac73-default-rtdb.firebaseio.com/")
         .getReference("publications")
     private lateinit var publicationsArrayList: ArrayList<PublicationsItem>
@@ -39,7 +40,6 @@ class PublicationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View{
         binding = FragmentPublicationsBinding.inflate(inflater, container, false)
-        onClickNewPublication()
         return binding.root
     }
 
@@ -48,6 +48,7 @@ class PublicationsFragment : Fragment() {
         binding.rcViewPublic.layoutManager = LinearLayoutManager(activity)
         binding.rcViewPublic.setHasFixedSize(true)
         publicationsArrayList = arrayListOf<PublicationsItem>()
+        onClickNewPublication()
 
         getPublicationsData()
 
@@ -74,12 +75,13 @@ class PublicationsFragment : Fragment() {
 
     private fun onClickNewPublication(){
         binding.ibAddPublication.setOnClickListener {
-            Toast.makeText(context, "gud job", Toast.LENGTH_SHORT).show()
+            /*Toast.makeText(context, "gud job", Toast.LENGTH_SHORT).show()
             val transaction = childFragmentManager.beginTransaction().apply {
                 replace(R.id.mainContent, NewPublicationFragment())
                 commit()
-            }
-
+            }*/
+            //val controller = findNavController()
+            navController.navigate(R.id.newPublicationFragment)
         }
     }
 
