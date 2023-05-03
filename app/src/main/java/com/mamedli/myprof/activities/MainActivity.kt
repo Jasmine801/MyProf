@@ -57,12 +57,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val transaction = supportFragmentManager.beginTransaction()
         when(item.itemId){
             R.id.id_public -> {
-                transaction.replace(R.id.mainContent, fragment)
-                transaction.commit()
+                var intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
             R.id.id_chats -> {
-                var intent = Intent(this, CareerActivity::class.java)
-                startActivity(intent)
+
             }
             R.id.id_settings -> {
 
@@ -71,12 +70,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContent) as NavHostFragment?
                 val navController = navHostFragment?.navController
                 navController?.navigate(R.id.careerFragment)*/
-                /*val fragment = CareerFragment()
+                val fragment = CareerFragment()
                 transaction.replace(R.id.mainContent, fragment)
-                transaction.commit()*/
+                transaction.commit()
                 //navController.navigate(R.id.careerFragment)
-                var intent = Intent(this, CareerActivity::class.java)
-                startActivity(intent)
+                /*var intent = Intent(this, CareerActivity::class.java)
+                startActivity(intent)*/
 
             }
             R.id.id_my_publications -> {

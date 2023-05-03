@@ -19,6 +19,7 @@ import com.mamedli.myprof.databinding.FragmentPublicationsBinding
 import com.mamedli.myprof.db.DaoFirebase
 import com.mamedli.myprof.db.MainDataBase
 import com.mamedli.myprof.entities.PublicationsItem
+import com.mamedli.myprof.entities.User
 
 
 class NewPublicationFragment : Fragment(), MenuProvider {
@@ -27,6 +28,7 @@ class NewPublicationFragment : Fragment(), MenuProvider {
     var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprof-1ac73-default-rtdb.firebaseio.com/")
         .getReference("publications")
     lateinit var binding: FragmentNewPublicationBinding
+    lateinit var user: User
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
