@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "305825190358",
-    "project_id": "myprofession-2ac22",
-    "storage_bucket": "myprofession-2ac22.appspot.com"
+    "project_number": "549862289866",
+    "firebase_url": "https://myprof-1ac73-default-rtdb.firebaseio.com",
+    "project_id": "myprof-1ac73",
+    "storage_bucket": "myprof-1ac73.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:305825190358:android:32dfda6f026f8386edd477",
+        "mobilesdk_app_id": "1:549862289866:android:27dbc9fea44d5fbf90df33",
         "android_client_info": {
           "package_name": "com.mamedli.myprof"
         }
       },
       "oauth_client": [
         {
-          "client_id": "305825190358-l2r3cb46cqc2d83pesovs2p7i0f4j70t.apps.googleusercontent.com",
+          "client_id": "549862289866-bsbdq9rgn8q28r15k4caemh6gofr06k8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mamedli.myprof",
+            "certificate_hash": "6ef58a29a0f2d86eac71d4fbf2cb3cf32f963d9a"
+          }
+        },
+        {
+          "client_id": "549862289866-2eabr4o6cjjtjs4qombf5ghdmkdb4k6h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCPXBR1iSXuGRdLA4zaLLsL7ji-hwz-j_c"
+          "current_key": "AIzaSyCfbFroVdjQWorrNSokkGzCzbTfQenYYLo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "305825190358-l2r3cb46cqc2d83pesovs2p7i0f4j70t.apps.googleusercontent.com",
+              "client_id": "549862289866-2eabr4o6cjjtjs4qombf5ghdmkdb4k6h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
