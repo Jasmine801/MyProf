@@ -1,19 +1,14 @@
 package com.mamedli.myprof.fragments
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
 import com.mamedli.myprof.R
-import com.mamedli.myprof.databinding.FragmentKlimovTestBinding
 
-class KlimovTestFragment : Fragment() {
+class LogInFragment : Fragment() {
 
-    lateinit var binding: FragmentKlimovTestBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,14 +19,11 @@ class KlimovTestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentKlimovTestBinding.inflate(inflater, container, false)
-        return binding.root
+        return inflater.inflate(R.layout.fragment_log_in, container, false)
     }
-
 
     companion object {
         @JvmStatic
-        fun newInstance() =
-            KlimovTestFragment()
+        fun newInstance() = LogInFragment()
     }
 }

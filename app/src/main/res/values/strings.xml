@@ -11,9 +11,17 @@
     <string name="ad_my_publications">Мои публикации</string>
     <string name="open">Открыть</string>
     <string name="close">Закрыть</string>
+    <string name="home">Back</string>
     <!-- Hint -->
     <string name="title">Заголовок</string>
     <string name="description">Описание</string>
+    <!-- LogIn strings -->
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="create_account">Зарегистрироваться</string>
+    <string name="sign_in">Войти</string>
+
+
     <!-- Career -->
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

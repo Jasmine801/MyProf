@@ -10,6 +10,7 @@ import com.google.android.material.navigation.NavigationView
 import com.mamedli.myprof.R
 import com.mamedli.myprof.databinding.ActivityMainBinding
 import com.mamedli.myprof.fragments.CareerFragment
+import com.mamedli.myprof.fragments.NewPublicationFragment
 import com.mamedli.myprof.fragments.PublicationsFragment
 
 
@@ -57,8 +58,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val transaction = supportFragmentManager.beginTransaction()
         when(item.itemId){
             R.id.id_public -> {
-                var intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                val fragment = PublicationsFragment()
+                transaction.replace(R.id.mainContent, fragment)
+                transaction.commit()
+                /*var intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)*/
             }
             R.id.id_chats -> {
 
