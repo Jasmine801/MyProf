@@ -18,7 +18,7 @@
     <!-- LogIn strings -->
     <string name="login">Логин</string>
     <string name="password">Пароль</string>
-    <string name="create_account">Зарегистрироваться</string>
+    <string name="create_account">Авторизоваться через Google</string>
     <string name="sign_in">Войти</string>
 
 

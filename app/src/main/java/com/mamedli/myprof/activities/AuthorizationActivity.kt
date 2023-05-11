@@ -28,7 +28,6 @@ class AuthorizationActivity : AppCompatActivity() {
         binding = ActivityAuthorizationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         auth = Firebase.auth
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             val task = GoogleSignIn.getSignedInAccountFromIntent(it.data)
@@ -44,7 +43,8 @@ class AuthorizationActivity : AppCompatActivity() {
             }
         }
 
-        binding.bLogIn.setOnClickListener { signInWithGoogle() }
+        binding.tvGoogleAuth.setOnClickListener { signInWithGoogle() }
+        checkAuthState()
     }
 
     private fun getClient() : GoogleSignInClient{
@@ -66,9 +66,17 @@ class AuthorizationActivity : AppCompatActivity() {
         auth.signInWithCredential(credential).addOnCompleteListener{
             if(it.isSuccessful){
                 Log.d("login", "Google sign in done")
+                checkAuthState()
             }else{
                 Log.d("login", "Error Google sign in")
             }
+        }
+    }
+
+    private fun checkAuthState(){
+        if(auth.currentUser != null){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }
