@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
@@ -27,7 +28,7 @@ class PublicationsFragment : Fragment() {
 
     lateinit var binding: FragmentPublicationsBinding
     private val navController by lazy { findNavController() }
-    var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprof-1ac73-default-rtdb.firebaseio.com/")
+    var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprofvol2-default-rtdb.firebaseio.com/")
         .getReference("publications")
     private lateinit var publicationsArrayList: ArrayList<PublicationsItem>
 
@@ -74,14 +75,10 @@ class PublicationsFragment : Fragment() {
     }
 
     private fun onClickNewPublication(){
+        val transaction = parentFragmentManager.beginTransaction()
+        val maincontent = view?.findViewById<View>(R.id.mainContent)
         binding.ibAddPublication.setOnClickListener {
-            /*Toast.makeText(context, "gud job", Toast.LENGTH_SHORT).show()
-            val transaction = childFragmentManager.beginTransaction().apply {
-                replace(R.id.mainContent, NewPublicationFragment())
-                commit()
-            }*/
-            //val controller = findNavController()
-            navController.navigate(R.id.newPublicationFragment)
+           navController.navigate(R.id.newPublicationFragment)
         }
     }
 

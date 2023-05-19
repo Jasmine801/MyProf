@@ -25,7 +25,7 @@ import com.mamedli.myprof.entities.User
 class NewPublicationFragment : Fragment(), MenuProvider {
 
     var dao = DaoFirebase()
-    var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprof-1ac73-default-rtdb.firebaseio.com/")
+    private var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprofvol2-default-rtdb.firebaseio.com/")
         .getReference("publications")
     lateinit var binding: FragmentNewPublicationBinding
     lateinit var user: User
@@ -39,8 +39,6 @@ class NewPublicationFragment : Fragment(), MenuProvider {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //createSaveMenu()
-        //actionBarSettings()
         binding = FragmentNewPublicationBinding.inflate(inflater, container, false)
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)

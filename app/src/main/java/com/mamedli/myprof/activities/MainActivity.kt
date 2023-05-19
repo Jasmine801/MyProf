@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityMainBinding
     private lateinit var toggle: ActionBarDrawerToggle
     private lateinit var auth: FirebaseAuth
-    //lateinit var navController: NavController
     val fragment = PublicationsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +34,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(binding.root)
         auth = Firebase.auth
         setUserAvatar()
-
     }
 
     private fun init(){
@@ -67,8 +65,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val fragment = PublicationsFragment()
                 transaction.replace(R.id.mainContent, fragment)
                 transaction.commit()
-                /*var intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)*/
             }
             R.id.id_chats -> {
 
@@ -77,16 +73,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             }
             R.id.id_career_guidance -> {
-                /*val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContent) as NavHostFragment?
-                val navController = navHostFragment?.navController
-                navController?.navigate(R.id.careerFragment)*/
                 val fragment = CareerFragment()
                 transaction.replace(R.id.mainContent, fragment)
                 transaction.commit()
-                //navController.navigate(R.id.careerFragment)
-                /*var intent = Intent(this, CareerActivity::class.java)
-                startActivity(intent)*/
-
             }
             R.id.id_my_publications -> {
 
@@ -105,7 +94,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val bMap = Picasso.get().load(auth.currentUser?.photoUrl).get()
             val dIcon = BitmapDrawable(resources, bMap)
             val accImage = findViewById<ImageView>(R.id.imAccountImage)
-            accImage.setImageDrawable(dIcon)
+            runOnUiThread{
+                accImage.setImageDrawable(dIcon)
+            }
         }.start()
     }
 
