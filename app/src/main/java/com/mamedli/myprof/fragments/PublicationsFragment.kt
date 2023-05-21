@@ -28,8 +28,10 @@ class PublicationsFragment : Fragment() {
 
     lateinit var binding: FragmentPublicationsBinding
     private val navController by lazy { findNavController() }
-    var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprofvol2-default-rtdb.firebaseio.com/")
+    var database: DatabaseReference = FirebaseDatabase
+        .getInstance("https://myprofvol2-3968c-default-rtdb.firebaseio.com/")
         .getReference("publications")
+
     private lateinit var publicationsArrayList: ArrayList<PublicationsItem>
 
     override fun onCreate(savedInstanceState: Bundle?) {

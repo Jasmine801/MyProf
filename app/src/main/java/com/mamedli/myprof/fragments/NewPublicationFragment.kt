@@ -25,7 +25,7 @@ import com.mamedli.myprof.entities.User
 class NewPublicationFragment : Fragment(), MenuProvider {
 
     var dao = DaoFirebase()
-    private var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprofvol2-default-rtdb.firebaseio.com/")
+    private var database: DatabaseReference = FirebaseDatabase.getInstance("https://myprofvol2-3968c-default-rtdb.firebaseio.com/")
         .getReference("publications")
     lateinit var binding: FragmentNewPublicationBinding
     lateinit var user: User
